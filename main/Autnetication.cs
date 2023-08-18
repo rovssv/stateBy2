@@ -33,7 +33,7 @@ namespace FMUnitTest
             UsersDto loggedInUser = pst.LoggedInUser(userCode, password);
             Assert.IsTrue(loggedInUser != null, "User info found.");
 
-            loggedInUser = pst.ChangeUserDisplayName(loggedInUser, "Md. Oliullah Siddique");
+            loggedInUser = pst.ChangeUserDisplayName(loggedInUser, "Mr. Khan Ali");
             Assert.IsTrue(loggedInUser != null, "User display name changed.");
         }
 

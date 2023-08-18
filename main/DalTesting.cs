@@ -137,6 +137,19 @@ namespace ForwarderManagementUnitTest
     //         // Wait one minute for catch call back
     //         System.Threading.Thread.Sleep(60000);
 
+                 
+            // I find all users with asynchronous call
+            asyncGroupEncode.FindDtoEncodeAsync(userfilter, null, callBackTestFindUserEncode, dbuserInfo);
+            // Invalidate precedenta call and find only one user by ID
+            userfilter = new UsersFilter { Id = 2, IsAsincCall = true };
+            asyncGroupEncode.FindDtoEncodeAsync(userfilter, null, callBackTestFindUserEncode, dbuserInfo);
+            userfilter = new UsersFilter { Id = 3, IsAsincCall = true };
+            asyncGroupEncode.FindDtoEncodeAsync(userfilter, null, callBackTestFindUserEncode, dbuserInfo);
+            userfilter = new UsersFilter { Code = "%hasa%", IsAsincCall = true };
+            asyncGroupEncode.FindDtoEncodeAsync(userfilter, null, callBackTestFindUserEncode, dbuserInfo);
+            // Wait one minute for catch call back
+            System.Threading.Thread.Sleep(60000);
+
     //         result = true;
 
 

@@ -53,5 +53,25 @@ namespace FMUnitTest
             loggedInUser = pst.ChangeUserPassword(loggedInUser, "asdf@1234");
             Assert.IsTrue(loggedInUser != null, "User display name changed.");
         }
+
+        //New added 2 
+        public void getGroupTypeMain(ref DataSet dsRef, string pGroupCode)
+        {
+            try
+            {
+                using (ConnectionManager objTemp = new ConnectionManager(GlobalInfo.ConnectionNames.SysMan))
+                {
+                    objTemp.OpenDataSetThroughAdapter("EXEC spGroupType @QType='1',@GroupCode='" + pGroupCode + "'", ref dsRef);
+                }
+                dsRef.Tables[0].TableName = "GroupType";
+                dsRef.Tables[1].TableName = "GroupMenuForm";
+                dsRef.Tables[2].TableName = "GroupMenuReports";
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

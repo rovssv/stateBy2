@@ -28,12 +28,16 @@ namespace FMUnitTest
         public void ChangeName()
         {
             UsersPst pst = new UsersPst();
-            string userCode = "oli";
+            string userCode = "jam";
             string password = "asdf@1234";
             UsersDto loggedInUser = pst.LoggedInUser(userCode, password);
             Assert.IsTrue(loggedInUser != null, "User info found.");
 
-            loggedInUser = pst.ChangeUserDisplayName(loggedInUser, "Mr. Khan Ali");
+            loggedInUser = pst.ChangeUserDisplayName(loggedInUser, "Mr. Ali");
+            Assert.IsTrue(loggedInUser != null, "User display name changed.");
+
+            //New added
+            loggedInUser = pct.ChangeUserDisplayName(loggedInUser, "Mr. Ali");
             Assert.IsTrue(loggedInUser != null, "User display name changed.");
         }
 
